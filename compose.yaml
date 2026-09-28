@@ -7,10 +7,8 @@ services:
     tmpfs: [/tmp]
     security_opt: [no-new-privileges:true]
     environment:
-      QUOTA_FILE: /data/quota.json
       UV_NO_CACHE: "1"
     volumes:
-      - /home/jack/sites/isys650:/data
       - /home/jack/sites/isys650/openrouter.key:/run/secrets/openrouter:ro
     networks: [proxy-net]
 networks:
