@@ -8,7 +8,7 @@ The draft targets the course assignment over the next few weeks by demonstrating
 
 ## Current status
 
-**Working code-first demo.** [Wanderplan](https://isys650.10server.net/) starts with an empty calendar. Ask Wanderbot uses OpenRouter web search to draft a three-day itinerary and accepts continued revisions to the current plan; Reset demo clears the plan and chat. Each draft or revision counts toward the global daily request cap. It is a rough planning demo, not a booking service. The old blank Langflow export in `flows/trip-agent.json` is historical, not the runtime.
+**Working code-first demo.** [Wanderplan](https://isys650.10server.net/) starts with an empty calendar. Ask Wanderbot uses OpenRouter web search to draft an itinerary of 1–30 days from the traveler's dates and accepts continued revisions to the current plan; Reset demo clears the plan and chat. Each draft or revision counts toward the global daily request cap. It is a rough planning demo, not a booking service. The old blank Langflow export in `flows/trip-agent.json` is historical, not the runtime.
 
 ## Prompting skill
 
