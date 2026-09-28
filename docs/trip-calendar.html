@@ -668,7 +668,7 @@
       <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
     </header>
     <div class="chat-messages" id="chatMessages" aria-live="polite">
-      <div class="message bot">Tell me your destination, travel dates, budget and interests. I’ll draft a three-day trip here and show it on the calendar. You can keep revising the current trip.</div>
+      <div class="message bot">Tell me your destination, travel dates, budget and interests. I’ll draft a trip of up to 30 days and show it on the calendar. You can keep revising the current trip.</div>
     </div>
     <form class="chat-form" id="chatForm">
       <label class="sr-only" for="chatInput">Ask Wanderbot to edit the trip</label>
@@ -827,7 +827,8 @@
       const [year, month, date] = plan.days[0].date.split('-').map(Number);
       currentMonth = new Date(year, month - 1, 1);
       document.querySelector('.trip-heading h1').textContent = plan.title;
-      document.getElementById('tripDates').textContent = `${plan.days[0].date} – ${plan.days[2].date} · AI draft, no bookings`;
+      const lastDay = plan.days[plan.days.length - 1];
+      document.getElementById('tripDates').textContent = `${plan.days[0].date} – ${lastDay.date} · AI draft, no bookings`;
       document.querySelector('.sidebar-note').textContent = `${plan.days.length}-day draft · ${cities.join(' · ')}`;
       document.getElementById('legend').innerHTML = cities.map((city, index) => `<span class="legend-item"><span class="legend-dot" style="background:${colors[palette[index % palette.length]]}"></span>${escapeHtml(city)}</span>`).join('');
       document.querySelector('.detail-panel').hidden = false;
@@ -935,7 +936,7 @@
           activePlan = result;
           pendingRequest = '';
           showPlan(result);
-          addMessage(`${result.title}\n${result.summary || ''}\nThe three-day draft is on the calendar. You can keep revising this trip, or use Reset demo to start over. Prices, hours and availability are unverified; check the linked sources.`, 'bot');
+          addMessage(`${result.title}\n${result.summary || ''}\nThe ${result.days.length}-day draft is on the calendar. You can keep revising this trip, or use Reset demo to start over. Prices, hours and availability are unverified; check the linked sources.`, 'bot');
         }
       } catch (error) {
         addMessage(error.message, 'bot');
